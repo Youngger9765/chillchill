@@ -1,3 +1,27 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.content{
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 15px;
+}
+
+.content p{
+  margin: 10px 20px 10px 20px;
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: normal;
+  font: normal normal normal 17px/1.4em basic,sans-serif;
+
+}
+
+.subtitle h3{
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  width: 90%;
+}

@@ -8,10 +8,74 @@
 </head>
 <body>
 
-  <h1>chill chill kaohsiung project.</h1>
-  <h1>去去高雄</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-10">
+      <p> En|中 </p>
+    </div>
+  </div>
+</div>
 
-<%= yield %>
+<br>  
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" id="title">
+        <div class="col-md-10">
+          <div class="row ">
+            <div class="col-md-12">
+              <h1>
+                <%=link_to "chill chill kaohsiung project.", projects_path%></h1>
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-md-10">
+              <h5><%= link_to "a field trip project to explore Kaohsiung chill-chill lifestyle via local food, art, life, daily fun, and nature",projects_path %></h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <h2 id="title2">
+            <%= link_to "去 去 高 雄", projects_path%></h2>
+        </div>
+        <br>
+    </div>
+  </div>
+
+  <h5>.</h5>
+  
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" id="banner-link">
+      <div class="col-md-3">
+        <%= link_to "food adventure"%>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "outdoor fun"%>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "local partner"%>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "reservation"%>
+      </div>
+    </div>
+    <div class="col-md-2">
+      ....
+    </div>
+    
+  </div> 
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>
