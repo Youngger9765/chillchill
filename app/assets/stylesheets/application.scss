@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 @import "projects";
+@import "partners";
 @import "font-awesome";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -23,7 +24,13 @@
 a{
   text-decoration: none;
   color: inherit;
+  font-family: din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;
 }
+
+h1,h2,h3,h4,h5,h6,p{
+  font-family: din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;
+}
+
 
 #title h1{
   font-size: 35px;
