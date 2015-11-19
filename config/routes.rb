@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :partners
+  resources :informations
 
   root :to => "projects#index"
 
