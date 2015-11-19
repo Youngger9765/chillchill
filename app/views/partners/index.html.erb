@@ -5,10 +5,13 @@
 
 
 <% @partners.each do |p|%>
-  <div class="col-md-4 partner_block">
-    <h3><%=p.name%></h3>
-    <p><%=p.company%></p>
-  </div>
+  <%= link_to partner_path(p) do%>
+    <div class="col-md-4 partner_block">
+      <img src="http://dummyimage.com/300x300/345/cdf.jpg" alt=""> 
+      <h3><%=p.name%></h3>
+      <p><%=p.company%></p>
+    </div>
+  <%end%>
 <%end%>
 
 
