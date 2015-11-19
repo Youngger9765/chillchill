@@ -13,18 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20151119015039) do
 
-  create_table "chill_chill_projects", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "partners", force: :cascade do |t|
     t.string   "name"
+    t.string   "en_name"
     t.string   "company"
-    t.text     "intrduction"
+    t.string   "en_company"
+    t.text     "introduction"
+    t.text     "en_introduction"
     t.text     "my_chillchill"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.text     "en_my_chillchill"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "projects", force: :cascade do |t|

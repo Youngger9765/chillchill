@@ -1,0 +1,45 @@
+<div class="partners_title">
+  <h1><%=@partner.name%> </h1>
+</div>
+<div class="row">
+  <div class="col-md-4 partner_show_content">
+    <br>
+    <br>
+    <%=simple_format (@partner.try(:introduction))%>
+  </div>
+
+  <div class="col-md-6 partner_show_img">
+    <img src="https://static.wixstatic.com/media/a18af5_9be8230e04ab41949c24a14fe646f1ff.jpeg_srz_p_658_439_75_22_0.5_1.2_0_jpeg_srz" alt=""> 
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md-6 partner_show_content">
+    <h3> Our Kaohsiung chill-chill </h3>
+    <%=simple_format(@partner.try(:my_chillchill))%>
+  </div>
+</div>
+
+<br>
+<div>
+  <%= link_to "節氣食旅 > > ", projects_path, :class =>"btn btn-warning btn-lg"%>
+</div>
+<br>
+<div>
+  <%= link_to "美濃微旅行 > > ", projects_path, :class =>"btn btn-success btn-lg"%>
+</div>
+<br>
+<div>
+  <%= link_to "遊船 > > ", projects_path, :class =>"btn btn-info btn-lg"%>
+</div>
+
+
+<hr>
+
+
+<div class="clearfix"></div>
+
+<%= form_for @partner, :url => partner_path(@partner.id), :method => :patch do |f|%>
+  <%= render :partial => 'partner_show', :locals => { :f => f} %>
+<%end%>
