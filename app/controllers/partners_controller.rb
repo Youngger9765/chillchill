@@ -6,13 +6,17 @@ class PartnersController < ApplicationController
   end
 
   def create
+    @partners = Partner.all
     @partner = Partner.new(find_partner)
-
+    
     if @partner.save
       flash[:notice] = "Create Success!"
       redirect_to partners_path
+    else
+      flash[:alert] = "Create fail!"
+      render "index"
     end
-    
+
   end
 
 
