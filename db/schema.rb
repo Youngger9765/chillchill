@@ -14,35 +14,35 @@
 ActiveRecord::Schema.define(version: 20151119053129) do
 
   create_table "information", force: :cascade do |t|
-    t.string   "address"
-    t.string   "en_address"
-    t.string   "company"
-    t.string   "en_company"
-    t.string   "open_day"
-    t.string   "en_open_day"
+    t.string   "address",     limit: 255
+    t.string   "en_address",  limit: 255
+    t.string   "company",     limit: 255
+    t.string   "en_company",  limit: 255
+    t.string   "open_day",    limit: 255
+    t.string   "en_open_day", limit: 255
     t.time     "open_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "partner_information_ships", force: :cascade do |t|
-    t.integer  "partner_id"
-    t.integer  "information_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "partner_id",     limit: 4
+    t.integer  "information_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "partners", force: :cascade do |t|
-    t.string   "name"
-    t.string   "en_name"
-    t.string   "company"
-    t.string   "en_company"
-    t.text     "introduction"
-    t.text     "en_introduction"
-    t.text     "my_chillchill"
-    t.text     "en_my_chillchill"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "name",             limit: 255
+    t.string   "en_name",          limit: 255
+    t.string   "company",          limit: 255
+    t.string   "en_company",       limit: 255
+    t.text     "introduction",     limit: 65535
+    t.text     "en_introduction",  limit: 65535
+    t.text     "my_chillchill",    limit: 65535
+    t.text     "en_my_chillchill", limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "projects", force: :cascade do |t|
