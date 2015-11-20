@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20151119053129) do
     t.string   "en_company",  limit: 255
     t.string   "open_day",    limit: 255
     t.string   "en_open_day", limit: 255
-    t.time     "open_time"
+    t.string   "open_time",   limit: 255
+    t.string   "close_time",  limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

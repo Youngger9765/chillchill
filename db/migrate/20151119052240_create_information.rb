@@ -7,7 +7,8 @@ class CreateInformation < ActiveRecord::Migration
       t.string :en_company
       t.string :open_day
       t.string :en_open_day
-      t.time :open_time
+      t.string :open_time
+      t.string :close_time
       t.timestamps null: false
     end
   end
