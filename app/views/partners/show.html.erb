@@ -40,6 +40,13 @@
 
 <%= link_to "Edit information", informations_path(:partner_id => @partner.id), :class =>"btn btn-default btn-lg"%>
 
+<% @informations.each do |i|%>
+  <ul>
+    <li><%= i.company%></li>
+    <li><%= i.address%></li> 
+    <li><%= i.open_time%> ~ <%= i.close_time%>  Every <%= i.open_day%></li>
+  </ul>  
+<%end%>
 
 <hr>
 

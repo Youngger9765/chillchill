@@ -22,6 +22,7 @@ class PartnersController < ApplicationController
   end
 
   def show
+    @informations = @partner.informations
   end
 
   def update
