@@ -28,6 +28,11 @@ class PartnersController < ApplicationController
   def update
     @partner.update(partner_params)
     flash[:notice] = "Update Success!"
+    if params[:destroy_logo] == "1"
+      @partner.logo = nil
+    end
+
+
     redirect_to partner_path(@partner)
   end
 
@@ -36,7 +41,8 @@ class PartnersController < ApplicationController
 
   def partner_params
     params.require(:partner).permit(:name, :company, :introduction, :my_chillchill,
-                                    :en_name, :en_company, :en_introduction, :en_my_chillchill
+                                    :en_name, :en_company, :en_introduction, :en_my_chillchill,
+                                    :logo
                                     )
   end
 

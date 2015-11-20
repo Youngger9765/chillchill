@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119053129) do
+ActiveRecord::Schema.define(version: 20151120114212) do
 
   create_table "information", force: :cascade do |t|
     t.string   "address",     limit: 255
@@ -34,16 +34,20 @@ ActiveRecord::Schema.define(version: 20151119053129) do
   end
 
   create_table "partners", force: :cascade do |t|
-    t.string   "name",             limit: 255
-    t.string   "en_name",          limit: 255
-    t.string   "company",          limit: 255
-    t.string   "en_company",       limit: 255
-    t.text     "introduction",     limit: 65535
-    t.text     "en_introduction",  limit: 65535
-    t.text     "my_chillchill",    limit: 65535
-    t.text     "en_my_chillchill", limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "name",              limit: 255
+    t.string   "en_name",           limit: 255
+    t.string   "company",           limit: 255
+    t.string   "en_company",        limit: 255
+    t.text     "introduction",      limit: 65535
+    t.text     "en_introduction",   limit: 65535
+    t.text     "my_chillchill",     limit: 65535
+    t.text     "en_my_chillchill",  limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "logo_file_name",    limit: 255
+    t.string   "logo_content_type", limit: 255
+    t.integer  "logo_file_size",    limit: 4
+    t.datetime "logo_updated_at"
   end
 
   create_table "projects", force: :cascade do |t|

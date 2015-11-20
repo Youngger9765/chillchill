@@ -7,7 +7,9 @@
 <% @partners.each do |p|%>
   <%= link_to partner_path(p) do%>
     <div class="col-md-4 partner_block">
-      <img src="http://dummyimage.com/300x300/345/cdf.jpg" alt=""> 
+      <% if p.logo.exists? %>
+        <%= image_tag(p.logo.url(:thumb))%>
+      <%end%>
       <h3><%=p.name%></h3>
       <p><%=p.company%></p>
     </div>
