@@ -30,6 +30,7 @@ class PartnersController < ApplicationController
     flash[:notice] = "Update Success!"
     if params[:destroy_logo] == "1"
       @partner.logo = nil
+      @partner.save
     end
 
 
