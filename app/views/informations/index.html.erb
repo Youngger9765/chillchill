@@ -1,1 +1,14 @@
 <h1>Partners information</h1>
+
+<% @informations.each do |i|%>
+  <ul>
+    <li><%= i.company%></li>
+    <li><%= i.address%></li> 
+    <li><%= i.open_time%> ~ <%= i.close_time%>  Every <%= i.open_day%></li>
+  </ul>  
+<%end%>
+
+
+<%= form_for @information, :url => informations_path(:partner_id => @partner.id), :method => :post do |f|%>
+  <%= render :partial => 'form', :locals => { :f => f} %>
+<%end%>
