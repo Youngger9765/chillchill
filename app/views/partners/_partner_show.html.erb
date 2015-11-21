@@ -47,4 +47,19 @@
     <% end %>
 </div>
 
+<div class="form-group">
+  <%= f.label :fb_url, "fb" %>
+  <%= f.text_field :fb_url, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :blog_url, "blog" %>
+  <%= f.text_field :blog_url, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :web_url, "web" %>
+  <%= f.text_field :web_url, :class => "form-control" %>
+</div>
+
 <%= f.submit "更新",:class => "btn btn-primary" %>

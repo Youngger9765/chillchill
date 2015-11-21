@@ -9,7 +9,7 @@ class InformationsController < ApplicationController
   def create
     @information = Information.create(information_params)
     PartnerInformationShip.create(:partner_id => params[:partner_id], :information_id => @information.id)
-    
+
     if @information.save
       flash[:notice] = "Create Success!"
       redirect_to informations_path(:partner_id => params[:partner_id])
@@ -26,6 +26,5 @@ class InformationsController < ApplicationController
                                     :open_day, :en_open_day, :open_time, :close_time
                                     )
   end
-
 
 end

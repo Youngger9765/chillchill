@@ -8,4 +8,40 @@ class Partner < ActiveRecord::Base
   has_many :partner_information_ships
   has_many :informations, :through => :partner_information_ships
 
+  has_many :partner_url_ships
+  has_many :urls, :through => :partner_url_ships
+
+  def fb
+    self.urls.find_by(:category => "fb")
+  end
+
+  def fb_url
+    self.urls.find_by(:category => "fb").try(:url)
+  end
+
+  def fb_url=(str)
+  end
+
+  def blog
+    self.urls.find_by(:category => "blog")
+  end
+
+  def blog_url
+    self.urls.find_by(:category => "blog").try(:url)
+  end
+
+  def blog_url=(str)
+  end
+
+  def web
+    self.urls.find_by(:category => "web")
+  end
+
+  def web_url
+    self.urls.find_by(:category => "web").try(:url)
+  end
+
+  def web_url=(str)
+  end
+
 end
