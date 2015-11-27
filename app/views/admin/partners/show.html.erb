@@ -51,9 +51,17 @@
 <br>
 
 <h4>
-<%= link_to "Facebook", url_for(@fb_url)%> |
-<%= link_to "Blog", url_for(@blog_url)%> |
-<%= link_to "Website", url_for(@web_url)%> |
+<%if @fb_url && @fb_url != ""%>
+  <%= link_to "Facebook", url_for(@fb_url)%> |
+<%end%>
+
+<%if @blog_url && @blog_url != ""%>
+  <%= link_to "Blog", url_for(@blog_url)%> |
+<%end%>
+
+<%if @web_url && @web_url != ""%>
+  <%= link_to "Website", url_for(@web_url)%> |
+<%end%>
 </h4>
 
 <hr>
@@ -61,6 +69,6 @@
 <div class="clearfix"></div>
 
 Edit partner
-<%= form_for @partner, :url => partner_path(@partner.id), :method => :patch do |f|%>
+<%= form_for @partner, :url => admin_partner_path(@partner.id), :method => :patch do |f|%>
   <%= render :partial => 'partner_show', :locals => { :f => f} %>
 <%end%>

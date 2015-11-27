@@ -38,8 +38,6 @@
 
 <hr>
 
-<%= link_to "Edit information", informations_path(:partner_id => @partner.id), :class =>"btn btn-default btn-lg"%>
-
 <% @informations.each do |i|%>
   <ul>
     <li><%= i.company%></li>
@@ -56,11 +54,10 @@
 <%= link_to "Website", url_for(@web_url)%> |
 </h4>
 
+
+<br>
+<br>
+<br>
+<br>
+
 <hr>
-
-<div class="clearfix"></div>
-
-Edit partner
-<%= form_for @partner, :url => partner_path(@partner.id), :method => :patch do |f|%>
-  <%= render :partial => 'partner_show', :locals => { :f => f} %>
-<%end%>

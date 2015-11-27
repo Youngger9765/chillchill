@@ -15,7 +15,7 @@ class Admin::PartnersController < ApplicationController
     
     if @partner.save
       flash[:notice] = "Create Success!"
-      redirect_to partners_path
+      redirect_to admin_partners_path
     else
       flash[:alert] = "Create fail!"
       render "index"
@@ -25,9 +25,9 @@ class Admin::PartnersController < ApplicationController
 
   def show
     @informations = @partner.informations
-    @fb_url = @partner.urls.find_by(:category => "fb").url
-    @blog_url = @partner.urls.find_by(:category => "blog").url
-    @web_url = @partner.urls.find_by(:category => "web").url
+    @fb_url = @partner.urls.find_by(:category => "fb").try(:url)
+    @blog_url = @partner.urls.find_by(:category => "blog").try(:url)
+    @web_url = @partner.urls.find_by(:category => "web").try(:url)
   end
 
   def update
@@ -65,7 +65,7 @@ class Admin::PartnersController < ApplicationController
       end
     end
 
-    redirect_to partner_path(@partner)
+    redirect_to admin_partner_path(@partner)
   end
 
 

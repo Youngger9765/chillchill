@@ -5,7 +5,7 @@
 
 
 <% @partners.each do |p|%>
-  <%= link_to partner_path(p) do%>
+  <%= link_to admin_partner_path(p) do%>
     <div class="col-md-4 partner_block">
       <% if p.logo.exists? %>
         <%= image_tag(p.logo.url(:thumb))%>
@@ -19,6 +19,6 @@
 
 <div class="clearfix"></div>
 
-<%= form_for @partner, :url => partners_path, :method => :post do |f|%>
+<%= form_for @partner, :url => admin_partners_path, :method => :post do |f|%>
   <%= render :partial => 'form', :locals => { :f => f} %>
 <%end%>
