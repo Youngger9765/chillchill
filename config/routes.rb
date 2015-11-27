@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :partners
   resources :informations
 
+  namespace :admin do
+    resources :partners
+  end
+
   root :to => "projects#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,24 @@
+<div class="partners_title">
+  <h1>chill chill partners </h1>
+</div>
+
+
+
+<% @partners.each do |p|%>
+  <%= link_to partner_path(p) do%>
+    <div class="col-md-4 partner_block">
+      <% if p.logo.exists? %>
+        <%= image_tag(p.logo.url(:thumb))%>
+      <%end%>
+      <h3><%=p.name%></h3>
+      <p><%=p.company%></p>
+    </div>
+  <%end%>
+<%end%>
+
+
+<div class="clearfix"></div>
+
+<%= form_for @partner, :url => partners_path, :method => :post do |f|%>
+  <%= render :partial => 'form', :locals => { :f => f} %>
+<%end%>
