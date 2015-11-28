@@ -1,8 +1,11 @@
 class ProjectsController < ApplicationController
 
-  def index
+  def main
     @categories = Category.all
+  end
 
+  def index
+    
   end
 
 

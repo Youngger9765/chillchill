@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get"/main" => "projects#main"
+
   resources :projects
   resources :partners
 
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  root :to => "projects#index"
+  root :to => "projects#main"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -45,7 +45,7 @@
 
     <% @categories.each do|c|%>
       <div class="col-md-offset-7">
-        <%= link_to "#{c.en_name} >>", projects_path, :class =>"#{c.class_color(c.id)}"%>
+        <%= link_to "#{c.en_name} >>", main_path, :class =>"#{c.class_color(c.id)}"%>
       </div>
       <br>
     <%end%>
