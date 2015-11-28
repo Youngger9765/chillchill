@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :partners
     resources :informations
     resources :categories
+    resources :projects
   end
 
   root :to => "projects#main"
