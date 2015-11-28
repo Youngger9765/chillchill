@@ -3,8 +3,14 @@ admin projects index
 
 <%@projects.each do |p|%>
   <div class="col-md-6 project_block">
+    <% if p.logo.exists? %>
+      <%= image_tag(p.logo.url(:thumb))%>
+    <%end%>
+    <br>
     <%=p.name%>
+    <br>
     <%=p.title%>
+    <br>
     <%=p.description%>
   </div>
 <%end%>

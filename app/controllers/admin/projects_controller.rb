@@ -17,11 +17,17 @@ class Admin::ProjectsController < ApplicationController
     end
   end
 
+  def update
+    if params[:destroy_logo] == "1"
+        @project.logo = nil
+    end
+  end
+
   private
 
   def project_params
     params.require(:project).permit(:name, :en_name,:title, :en_title, 
-                                    :description,:en_description
+                                    :description,:en_description, :logo
                                   )
   end
 

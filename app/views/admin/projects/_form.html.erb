@@ -28,4 +28,13 @@
   <%= f.text_field :en_description, :class => "form-control" %>
 </div>
 
+<div class="form-group">
+    <%=f.label :logo, "LOGO"%>
+    <%=f.file_field :logo%>
+
+    <% if @project.logo.exists? %>
+      <%= check_box_tag "destroy_logo", "1" %> 刪除檔案
+    <% end %>
+</div>
+
 <%= f.submit "更新",:class => "btn btn-primary" %>
