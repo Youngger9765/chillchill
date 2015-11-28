@@ -2,9 +2,14 @@
 <html>
 <head>
   <title>Chillchill</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
+  <meta property="og:url"           content="http://localhost:3000/partners/1" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="去去高雄｜ chill chill kaohsiung project. ｜ local tour ｜ cooking class" />
+  <meta property="og:description"   content="高雄,廚藝教室,有機市集,體驗,料理,做菜,農夫市集,料理教室,美濃,好吃,品茶,品茗,攀岩,探洞,騎單車,旅遊觀光,愛河,節氣食旅,背包客,特殊體驗,創意,旅行,設計,風格城市,港都,駁二,酷玩,有趣,輕鬆快活,小旅行廚房,ki厝,郭銘哲,chez kiki,微風市集,勇氣廚房,李建達,agnes甜點,雄好呷" />
+  <meta property="og:image"         content="http://img1.wikia.nocookie.net/__cb20110105015923/ranmafanon/images/c/c7/Jnh_hj_hj_bhj_bhbj_hbj.jpg" />
 </head>
 <body>
 
@@ -89,6 +94,14 @@
   </div>
 </div>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=563223240506725";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 </body>
