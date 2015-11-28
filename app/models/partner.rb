@@ -5,11 +5,10 @@ class Partner < ActiveRecord::Base
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
-  has_many :partner_information_ships
-  has_many :informations, :through => :partner_information_ships
+  has_many :informations, :dependent => :destroy
 
-  has_many :partner_url_ships
-  has_many :urls, :through => :partner_url_ships
+  has_many :partner_url_ships, :dependent => :delete_all
+  has_many :urls, :through => :partner_url_ships, :dependent => :delete_all
 
   def fb
     self.urls.find_by(:category => "fb")

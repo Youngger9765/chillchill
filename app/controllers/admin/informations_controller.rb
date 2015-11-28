@@ -1,4 +1,4 @@
-class InformationsController < ApplicationController
+class Admin::InformationsController < ApplicationController
 
   def index
     @partner = Partner.find(params[:partner_id])
@@ -8,11 +8,11 @@ class InformationsController < ApplicationController
 
   def create
     @information = Information.create(information_params)
-    PartnerInformationShip.create(:partner_id => params[:partner_id], :information_id => @information.id)
+    @information.update(:partner_id => params[:partner_id])
 
     if @information.save
       flash[:notice] = "Create Success!"
-      redirect_to informations_path(:partner_id => params[:partner_id])
+      redirect_to admin_informations_path(:partner_id => params[:partner_id])
     else
       flash[:alert] = "Create fail!"
       render "index"

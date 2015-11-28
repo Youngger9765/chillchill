@@ -1,6 +1,7 @@
 class CreateInformation < ActiveRecord::Migration
   def change
     create_table :information do |t|
+      t.integer :partner_id
       t.string :address
       t.string :en_address
       t.string :company

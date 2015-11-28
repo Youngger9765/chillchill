@@ -66,7 +66,6 @@ class PartnersController < ApplicationController
     redirect_to partner_path(@partner)
   end
 
-
   private
 
   def partner_params

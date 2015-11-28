@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151120123234) do
 
   create_table "information", force: :cascade do |t|
+    t.integer  "partner_id",  limit: 4
     t.string   "address",     limit: 255
     t.string   "en_address",  limit: 255
     t.string   "company",     limit: 255
@@ -24,13 +25,6 @@ ActiveRecord::Schema.define(version: 20151120123234) do
     t.string   "close_time",  limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-  end
-
-  create_table "partner_information_ships", force: :cascade do |t|
-    t.integer  "partner_id",     limit: 4
-    t.integer  "information_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
   end
 
   create_table "partner_url_ships", force: :cascade do |t|

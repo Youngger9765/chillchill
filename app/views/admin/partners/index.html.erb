@@ -12,6 +12,7 @@
       <%end%>
       <h3><%=p.name%></h3>
       <p><%=p.company%></p>
+      <%=link_to "Delete", admin_partner_path(p),:method => :delete, :class => "btn btn-danger"%>
     </div>
   <%end%>
 <%end%>

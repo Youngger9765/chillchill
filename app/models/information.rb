@@ -1,6 +1,5 @@
 class Information < ActiveRecord::Base
 
-  has_many :partner_information_ships
-  has_many :partners, :through => :partner_information_ships
+  belongs_to :partner
 
 end

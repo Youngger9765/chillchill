@@ -2,7 +2,7 @@ class Admin::PartnersController < ApplicationController
 
   layout "admin"
 
-  before_action :find_partner, :only =>[:show, :update]
+  before_action :find_partner, :only =>[:show, :update, :destroy]
 
   def index
     @partners = Partner.all
@@ -66,6 +66,12 @@ class Admin::PartnersController < ApplicationController
     end
 
     redirect_to admin_partner_path(@partner)
+  end
+
+  def destroy
+    @partner.destroy
+
+    redirect_to admin_partners_path
   end
 
 
