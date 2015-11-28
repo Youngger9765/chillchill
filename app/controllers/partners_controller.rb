@@ -23,9 +23,9 @@ class PartnersController < ApplicationController
 
   def show
     @informations = @partner.informations
-    @fb_url = @partner.urls.find_by(:category => "fb").url
-    @blog_url = @partner.urls.find_by(:category => "blog").url
-    @web_url = @partner.urls.find_by(:category => "web").url
+    @fb_url = @partner.urls.find_by(:category => "fb").try(:url)
+    @blog_url = @partner.urls.find_by(:category => "blog").try(:url)
+    @web_url = @partner.urls.find_by(:category => "web").try(:url)
   end
 
   def update
