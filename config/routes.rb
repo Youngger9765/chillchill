@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :partners
     resources :informations
+    resources :categories
   end
 
   root :to => "projects#index"

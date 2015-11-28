@@ -1,5 +1,7 @@
 class Admin::InformationsController < ApplicationController
 
+  layout "admin"
+  
   def index
     @partner = Partner.find(params[:partner_id])
     @information = Information.new

@@ -43,15 +43,13 @@
     <p>There have been various fun chill-chill Kaohsiung projects tour on line. Go check it out and let us be your key access to "Kaohsiung chill-chill"!</p>  
     <br>
 
-    <div class="col-md-offset-7">
-      <%= link_to "food projects >>", projects_path, :class =>"btn btn-warning btn-lg"%>
-    </div>
-    <br>
+    <% @categories.each do|c|%>
+      <div class="col-md-offset-7">
+        <%= link_to "#{c.en_name} >>", projects_path, :class =>"#{c.class_color(c.id)}"%>
+      </div>
+      <br>
+    <%end%>
 
-    <div class="col-md-offset-7">
-      <%= link_to "outdoor projects >>", projects_path, :class =>"btn btn-primary btn-lg"%>
-    </div>
-    <br>
   </div>
   
   
