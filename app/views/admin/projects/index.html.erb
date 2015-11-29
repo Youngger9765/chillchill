@@ -7,6 +7,9 @@ admin projects index
       <%= image_tag(p.logo.url(:thumb))%>
     <%end%>
     <br>
+    <%=link_to "Edit", admin_projects_path(:project_id => p.id), :class => "btn btn-info"%>
+    <%=link_to "delete", admin_project_path(p),:method => :delete, :class => "btn btn-danger",data: {confirm: "Are you sure?"}%>
+    <br>
     <%=p.name%>
     <br>
     <%=p.title%>
@@ -17,7 +20,18 @@ admin projects index
 
 
 <div class="clearfix"></div>
+<%
+  if params[:project_id]
+    #edit
+    url = admin_project_path(@project)
+  else 
+    #new
+    url = admin_projects_path
+  end
+%>
 
-<%= form_for @project, :url => admin_projects_path, :method => :post do |f|%>
+<%=link_to "New", admin_projects_path, :class => "btn btn-primary"%>
+
+<%= form_for @project, :url => url do |f|%>
   <%= render :partial => 'form', :locals => { :f => f} %>
 <%end%>

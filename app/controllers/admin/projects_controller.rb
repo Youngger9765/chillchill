@@ -1,8 +1,17 @@
 class Admin::ProjectsController < ApplicationController
 
+  layout "admin"
+
+  before_action :find_project, :only => [:update, :destroy]
+
   def index
     @projects = Project.all
-    @project = Project.new
+
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+    else
+      @project = Project.new
+    end
   end
 
   def create
@@ -18,10 +27,24 @@ class Admin::ProjectsController < ApplicationController
   end
 
   def update
+    @project.update(project_params)
+    
     if params[:destroy_logo] == "1"
         @project.logo = nil
+        @project.save
     end
+
+    flash[:notice] = "Update Success!"
+    redirect_to admin_projects_path
   end
+
+  def destroy
+    @project.destroy
+
+    redirect_to admin_projects_path
+  end
+
+
 
   private
 
@@ -29,6 +52,10 @@ class Admin::ProjectsController < ApplicationController
     params.require(:project).permit(:name, :en_name,:title, :en_title, 
                                     :description,:en_description, :logo
                                   )
+  end
+
+  def find_project
+    @project = Project.find(params[:id])
   end
 
 end
