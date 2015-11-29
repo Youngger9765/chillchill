@@ -10,9 +10,8 @@ admin projects index
     <br>
     <%=link_to "Edit", admin_projects_path(:project_id => p.id), :class => "btn btn-info"%>
     <%=link_to "delete", admin_project_path(p),:method => :delete, :class => "btn btn-danger",data: {confirm: "Are you sure?"}%>
-    <br>
+    
     <h3><%=p.title%></h3>
-    <br>
     <%=simple_format p.description%>
   </div>
 <%end%>
