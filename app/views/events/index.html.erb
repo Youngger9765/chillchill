@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <td>project</td>
+    <td>name</td>
+    <td>date</td>
+    <td>time</td>
+    <td>place</td>
+    <td>cost</td>
+    <td>編輯</td>
+    <td>刪除</td>
+  </tr>
+  <% @events.each do |event|%>
+    <tr>
+      <td><%=event.project.name%></td>
+      <td><%=event.name%></td>
+      <td><%=event.start_date%>~<%=event.end_date%></td>
+      <td><%=event.start_time.strftime("%H:%M") %>~<%=event.end_time.strftime("%H:%M") %></td>
+      <td><%=event.place%></td>
+      <td><%=event.cost%></td>
+      <td><%=link_to "Edit", admin_events_path(:event_id => event.id), :class => "btn btn-info"%></td>
+      <td><%=link_to "Delete", admin_event_path(event), :method => :delete, :class => "btn btn-danger"%></td>
+      <% if event.logo.exists? %>
+        <td><%=image_tag(event.logo.url(:thumb))%></td>  
+      <%end%>
+    </tr> 
+  <%end%>
+</table>

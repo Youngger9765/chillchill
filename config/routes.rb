@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get"/main" => "projects#main"
 
-  resources :projects
+  resources :projects do
+    resources :events
+  end
   resources :partners
 
   namespace :admin do
