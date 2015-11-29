@@ -4,17 +4,16 @@ admin projects index
 <%@projects.each do |p|%>
   <div class="col-md-6 project_block">
     <% if p.logo.exists? %>
-      <%= image_tag(p.logo.url(:thumb))%>
+      <a href="#"><%= image_tag(p.logo.url(:thumb))%><h3 class="project_name"><%=p.name%></h3> </a>
+      
     <%end%>
     <br>
     <%=link_to "Edit", admin_projects_path(:project_id => p.id), :class => "btn btn-info"%>
     <%=link_to "delete", admin_project_path(p),:method => :delete, :class => "btn btn-danger",data: {confirm: "Are you sure?"}%>
     <br>
-    <%=p.name%>
+    <h3><%=p.title%></h3>
     <br>
-    <%=p.title%>
-    <br>
-    <%=p.description%>
+    <%=simple_format p.description%>
   </div>
 <%end%>
 
