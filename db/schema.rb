@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128094554) do
+ActiveRecord::Schema.define(version: 20151129145950) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -29,6 +29,27 @@ ActiveRecord::Schema.define(version: 20151128094554) do
 
   add_index "category_project_ships", ["category_id"], name: "index_category_project_ships_on_category_id", using: :btree
   add_index "category_project_ships", ["project_id"], name: "index_category_project_ships_on_project_id", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "project_id",        limit: 4
+    t.string   "name",              limit: 255
+    t.string   "en_name",           limit: 255
+    t.string   "note",              limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.text     "place",             limit: 65535
+    t.text     "address",           limit: 65535
+    t.text     "cost",              limit: 65535
+    t.text     "notice",            limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "logo_file_name",    limit: 255
+    t.string   "logo_content_type", limit: 255
+    t.integer  "logo_file_size",    limit: 4
+    t.datetime "logo_updated_at"
+  end
 
   create_table "information", force: :cascade do |t|
     t.integer  "partner_id",  limit: 4

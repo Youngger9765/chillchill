@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :informations
     resources :categories
     resources :projects
+    resources :events
   end
 
   root :to => "projects#main"
