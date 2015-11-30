@@ -1,0 +1,23 @@
+development:
+  adapter:
+  encoding:
+  database:
+  host:
+  username:
+  password:
+
+test:
+  adapter:
+  encoding:
+  database:
+  host:
+  username:
+  password:
+
+production:
+  adapter:
+  encoding:
+  database:
+  host:
+  username:
+  password:
