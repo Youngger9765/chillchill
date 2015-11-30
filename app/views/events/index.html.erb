@@ -1,27 +1,52 @@
-<table class="table">
-  <tr>
-    <td>project</td>
-    <td>name</td>
-    <td>date</td>
-    <td>time</td>
-    <td>place</td>
-    <td>cost</td>
-    <td>編輯</td>
-    <td>刪除</td>
-  </tr>
-  <% @events.each do |event|%>
-    <tr>
-      <td><%=event.project.name%></td>
-      <td><%=event.name%></td>
-      <td><%=event.start_date%>~<%=event.end_date%></td>
-      <td><%=event.start_time.strftime("%H:%M") %>~<%=event.end_time.strftime("%H:%M") %></td>
-      <td><%=event.place%></td>
-      <td><%=event.cost%></td>
-      <td><%=link_to "Edit", admin_events_path(:event_id => event.id), :class => "btn btn-info"%></td>
-      <td><%=link_to "Delete", admin_event_path(event), :method => :delete, :class => "btn btn-danger"%></td>
-      <% if event.logo.exists? %>
-        <td><%=image_tag(event.logo.url(:thumb))%></td>  
-      <%end%>
-    </tr> 
-  <%end%>
-</table>
+<div class="event-project-name">
+  <h1><%=@project.name%></h1>
+</div>
+
+<% @project.events.each do |event|%>
+  <div class="col-md-12 event-block">
+    <div class="row">
+      <div class="col-md-4">
+        <% if event.logo.exists? %>
+          <%=image_tag(event.logo.url(:thumb))%> 
+        <%end%>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12 event-block-title">
+            <h2><%=event.name%></h2>
+            <h4><%=event.en_name%></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 event-block-datetime">
+            <%if event.start_date ==  event.end_date%>
+            <%=event.start_date%>
+          <%else%>
+            <%=event.start_date%>~<%=event.end_date%> 
+          <%end%>
+          <%=event.start_time.strftime("%H:%M") %>~<%=event.end_time.strftime("%H:%M") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 event-block-content">
+            <h4><%=event.note%></h4>
+          </div>
+        </div>
+        <div class="row event-show">
+          <%= link_to "see more >>", project_event_path(:project_id => @project.id, :id => event.id), :class =>"btn btn-info btn-lg"%>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+.
+
+
+<br>
+<br>
+<br>
+<br>
+<hr>
+.
+
