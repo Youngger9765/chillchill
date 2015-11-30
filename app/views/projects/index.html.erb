@@ -2,8 +2,8 @@
   <div class="col-md-6 project_block">
     <% if p.logo.exists? %>
       <%= link_to project_events_path(:project_id => p) do%>
-        <h3 class="project_name"><%=p.name%></h3>
         <%= image_tag(p.logo.url(:thumb))%>
+        <h3 class="project_name"><%=p.name%></h3>
       <%end%>
       
     <%end%>
