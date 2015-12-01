@@ -35,12 +35,18 @@ class Admin::EventsController < ApplicationController
     end
 
     if params[:event][:day_list]
+      @event.reservation_days.delete_all
       day_list = params[:event][:day_list]
       day_list.shift(1)
 
       day_list.each do|d|
         if ReservationDay.find_by_day_info(d) == nil
           day = ReservationDay.create!(:day_info => d)
+          EventReservationDayShip.create!( :event_id => @event.id, :reservation_day_id => day.id)
+        elsif @event.reservation_days.find_by_day_info(d)
+
+        else
+          day =ReservationDay.find_by_day_info(d)
           EventReservationDayShip.create!( :event_id => @event.id, :reservation_day_id => day.id)
         end
       end

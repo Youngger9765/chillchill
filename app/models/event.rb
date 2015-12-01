@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
   has_many  :reservation_days, :through => :event_reservation_day_ships
 
   def day_list
-    self.reservation_days.map{ |d| d.day_info }.join(",")
+    self.reservation_days.map{ |d| d.day_info }
   end
 
   def day_list=(str)
