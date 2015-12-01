@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129145950) do
+ActiveRecord::Schema.define(version: 20151201072630) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20151129145950) do
 
   add_index "category_project_ships", ["category_id"], name: "index_category_project_ships_on_category_id", using: :btree
   add_index "category_project_ships", ["project_id"], name: "index_category_project_ships_on_project_id", using: :btree
+
+  create_table "event_reservation_day_ships", force: :cascade do |t|
+    t.integer  "reservation_day_id", limit: 4
+    t.integer  "event_id",           limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer  "project_id",        limit: 4
@@ -105,6 +112,30 @@ ActiveRecord::Schema.define(version: 20151129145950) do
     t.string   "logo_content_type", limit: 255
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
+  end
+
+  create_table "registration_forms", force: :cascade do |t|
+    t.integer  "event_id",       limit: 4
+    t.integer  "user_id",        limit: 4
+    t.string   "first_name",     limit: 255
+    t.string   "last_name",      limit: 255
+    t.integer  "phone_number",   limit: 4
+    t.string   "email",          limit: 255
+    t.integer  "people",         limit: 4
+    t.integer  "kids",           limit: 4
+    t.string   "registed_day",   limit: 255
+    t.string   "payment",        limit: 255
+    t.string   "payment_status", limit: 255
+    t.text     "notice",         limit: 65535
+    t.text     "opinion",        limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "reservation_days", force: :cascade do |t|
+    t.string   "day_info",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "urls", force: :cascade do |t|

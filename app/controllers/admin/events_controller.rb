@@ -34,6 +34,18 @@ class Admin::EventsController < ApplicationController
         @event.save
     end
 
+    if params[:event][:day_list]
+      day_list = params[:event][:day_list]
+      day_list.shift(1)
+
+      day_list.each do|d|
+        if ReservationDay.find_by_day_info(d) == nil
+          day = ReservationDay.create!(:day_info => d)
+          EventReservationDayShip.create!( :event_id => @event.id, :reservation_day_id => day.id)
+        end
+      end
+    end
+
     flash[:notice] = "Update Success!"
     redirect_to admin_events_path
   end
@@ -53,7 +65,7 @@ class Admin::EventsController < ApplicationController
                                   :name, :en_name, :content, :en_content,
                                   :date, :time,
                                   :place,:address, :cost, :discount,
-                                  :notice,:tips, :logo
+                                  :notice,:tips, :logo , :day_list
                                   )
   end   
 
