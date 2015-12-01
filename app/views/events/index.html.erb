@@ -2,6 +2,15 @@
   <h1><%=@project.name%></h1>
 </div>
 
+<div class="clearfix"></div>
+
+<div class="pre-event">
+  <a href="https://www.facebook.com/chillchillkaohsiung/photos_stream?tab=photos_albums">
+  <span class="row"><h5>see previous projects > > </h5></span>
+  <h5>已舉辦之企劃 記錄 </h5>
+  </a>
+</div>
+
 <% @project.events.each do |event|%>
   <div class="col-md-12 event-block">
     <div class="row">
