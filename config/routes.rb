@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get"/main" => "projects#main"
 
   resources :projects do
-    resources :events
+    resources :events do
+      member do
+        post :registration_form
+      end  
+    end  
   end
   resources :partners
 

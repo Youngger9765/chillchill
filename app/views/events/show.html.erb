@@ -91,6 +91,13 @@
     <h4><%=simple_format @event.tips%></h4>
     </div>
   </div>
-
 </div>
+
+<div class="clearfix"></div>
+
+
+<%= form_for @registration_form, :url =>registration_form_project_event_path do |f|%>
+  <%= render :partial => 'form', :locals => { :f => f} %>
+<%end%>
+
 

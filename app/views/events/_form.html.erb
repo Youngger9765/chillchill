@@ -1,0 +1,76 @@
+<div class="col-md-12 register-form-block">
+  <div class="row">
+    <div class="col-md-12 ">
+      <h3><%= @event.name%></h3>
+      <h3>活動預約表</h3> 
+    </div>
+  </div>
+  
+
+<hr>
+<div class="clearfix"></div>
+
+  <div class="col-md-6 ">
+    <div class="col-md-6">
+      <div class="form-group">
+        <p>姓名 <span>*</span> </p> 
+        <%= f.text_field :first_name, :class => "form-control", :placeholder => "first name"%>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <p> .</p>
+        <%= f.text_field :last_name, :class => "form-control", :placeholder => "last name" %>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :phone_number, "電話" %> <span>*</span> 
+        <%= f.text_field :phone_number, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email" %> <span>*</span> 
+        <%= f.text_field :email, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :people, "大人數" %> <span>*</span> 
+        <%= f.text_field :people, :class => "form-control" %>
+      </div>
+
+      <div class="form-group"> 
+        <%= f.label :kids, "小孩數（小於12歲）" %><span>*</span> 
+        <%= f.text_field :kids, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :payment, "付款方式" %> <span>*</span> 
+        <%= f.select :payment, ["ATM轉帳","線上刷卡"] %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :notice, "是否有對任何食物過敏、禁忌？" %>
+        <%= f.text_area :notice, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :opinion, "意見詢問" %>
+        <%= f.text_area :opinion, :class => "form-control" %>
+      </div>
+
+      <%= f.submit "送出",:class => "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  $("#event_day_list").select2({
+     tags: <%=raw ReservationDay.all.map{ |t| t.day_info }.to_json %>,
+     tokenSeparators: [',', ' ']
+   });
+</script>
