@@ -5,7 +5,10 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    if params[:category]
+      @category = Category.find(params[:category])
+      @projects = @category.projects
+    end
   end
 
 

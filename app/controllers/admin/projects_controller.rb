@@ -5,6 +5,7 @@ class Admin::ProjectsController < ApplicationController
   before_action :find_project, :only => [:update, :destroy]
 
   def index
+    @categories = Category.all
     @projects = Project.all
 
     if params[:project_id]
@@ -50,7 +51,8 @@ class Admin::ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :en_name,:title, :en_title, 
-                                    :description,:en_description, :logo
+                                    :description,:en_description, :logo,
+                                    :category_ids => []
                                   )
   end
 

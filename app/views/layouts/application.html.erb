@@ -70,8 +70,9 @@
     <div class="col-md-9 col-md-offset-2" id="banner-link">
       <div class="table">
         <tr>
-          <td><%= link_to "food adventure"%></td>
-          <td><%= link_to "outdoor fun", projects_path%></td>
+          <% Category.all.each do |c|%>
+            <td><%= link_to c.name, projects_path(:category => c.id)%></td>
+          <%end%>
           <td><%= link_to "local partner", partners_path%></td>
           <td><%= link_to "reservation"%></td>
           <td>

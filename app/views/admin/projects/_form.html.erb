@@ -1,4 +1,15 @@
 <div class="form-group">
+  <h3><%= "類型（多選）" %></h3> 
+  <% @categories.each do |c| %>
+    <h4>
+    <%= check_box_tag "project[category_ids][]", c.id, @project.categories.map(&:id).include?(c.id) %> <%= c.name %>
+    </h4>
+  <% end %>
+<%= hidden_field_tag 'project[category_ids][]','' %>
+
+</div>
+
+<div class="form-group">
   <%= f.label :name, "project_中文" %>
   <%= f.text_field :name, :class => "form-control" %>
 </div>
