@@ -18,13 +18,20 @@
 
 }
 
+.subtitle{
+  
+}
+
 .subtitle h3{
   line-height: 30px;
-  text-align: center;
+  text-align: left;
   font-size: 20px;
   color: white;
-  background-color: black;
-  width: 90%;
+  background-color: #1B2932;
+  float: left;
+  padding: 10px;
+  display: block;
+  float: left;
 }
 
 .project_block{
