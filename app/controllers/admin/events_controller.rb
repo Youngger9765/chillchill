@@ -49,9 +49,11 @@ class Admin::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:project_id, :note, :name, :en_name,
-                                  :start_date, :end_date, :start_time, :end_time,
-                                  :place,:address, :cost, :notice, :logo
+    params.require(:event).permit(:project_id, :introduction,:en_introduction,
+                                  :name, :en_name, :content, :en_content,
+                                  :date, :time,
+                                  :place,:address, :cost, :discount,
+                                  :notice,:tips, :logo
                                   )
   end   
 

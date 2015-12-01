@@ -15,8 +15,8 @@ event index
     <tr>
       <td><%=event.project.name%></td>
       <td><%=event.name%></td>
-      <td><%=event.start_date%>~<%=event.end_date%></td>
-      <td><%=event.start_time.strftime("%H:%M") %>~<%=event.end_time.strftime("%H:%M") %></td>
+      <td><%=event.date%></td>
+      <td><%=event.time%></td>
       <td><%=event.place%></td>
       <td><%=event.cost%></td>
       <td><%=link_to "Edit", admin_events_path(:event_id => event.id), :class => "btn btn-info"%></td>

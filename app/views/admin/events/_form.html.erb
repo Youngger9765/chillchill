@@ -14,48 +14,63 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :note, "note" %>
-  <%= f.text_area :note, :class => "form-control" %>
+  <%= f.label :introduction, "介紹" %>
+  <%= f.text_area :introduction, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :start_date, "start_date" %>
-  <%= f.date_select :start_date, :class => "form-control" %>
+  <%= f.label :en_introduction, "en_introduction" %>
+  <%= f.text_area :en_introduction, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :end_date, "end_date" %>
-  <%= f.date_select :end_date, :class => "form-control" %>
+  <%= f.label :content, "內容" %>
+  <%= f.text_area :content, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :start_time, "start_time" %>
-  <%= f.time_select :start_time, :class => "form-control" %>
+  <%= f.label :en_content, "en_content" %>
+  <%= f.text_area :en_content, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :end_time, "end_time" %>
-  <%= f.time_select :end_time, :class => "form-control" %>
+  <%= f.label :date, "日期" %>
+  <%= f.text_area :date, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :place, "place" %>
+  <%= f.label :time, "時間" %>
+  <%= f.text_area :time, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :place, "集合地點" %>
   <%= f.text_field :place, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :address, "address" %>
+  <%= f.label :address, "地址" %>
   <%= f.text_field :address, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :cost, "cost" %>
+  <%= f.label :cost, "價格" %>
   <%= f.text_area :cost, :class => "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :notice, "notice" %>
+  <%= f.label :discount, "優惠" %>
+  <%= f.text_area :discount, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :notice, "注意事項" %>
   <%= f.text_area :notice, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :tips, "貼心提醒" %>
+  <%= f.text_area :tips, :class => "form-control" %>
 </div>
 
 <div class="form-group">

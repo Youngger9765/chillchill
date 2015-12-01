@@ -19,17 +19,14 @@
         </div>
         <div class="row">
           <div class="col-md-12 event-block-datetime">
-            <%if event.start_date ==  event.end_date%>
-            <%=event.start_date%>
-          <%else%>
-            <%=event.start_date%>~<%=event.end_date%> 
-          <%end%>
-          <%=event.start_time.strftime("%H:%M") %>~<%=event.end_time.strftime("%H:%M") %>
+            <%=event.date%>
+            
+          <%=event.time %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 event-block-content">
-            <h4><%=event.note%></h4>
+            <h4><%=event.introduction%></h4>
           </div>
         </div>
         <div class="row event-show">
@@ -40,13 +37,5 @@
   </div>
 <%end%>
 
-.
 
-
-<br>
-<br>
-<br>
-<br>
-<hr>
-.
 

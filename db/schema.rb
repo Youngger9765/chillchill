@@ -34,15 +34,18 @@ ActiveRecord::Schema.define(version: 20151129145950) do
     t.integer  "project_id",        limit: 4
     t.string   "name",              limit: 255
     t.string   "en_name",           limit: 255
-    t.string   "note",              limit: 255
-    t.date     "start_date"
-    t.date     "end_date"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.text     "introduction",      limit: 65535
+    t.text     "en_introduction",   limit: 65535
+    t.text     "content",           limit: 65535
+    t.text     "en_content",        limit: 65535
+    t.text     "date",              limit: 65535
+    t.text     "time",              limit: 65535
     t.text     "place",             limit: 65535
     t.text     "address",           limit: 65535
     t.text     "cost",              limit: 65535
+    t.text     "discount",          limit: 65535
     t.text     "notice",            limit: 65535
+    t.text     "tips",              limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "logo_file_name",    limit: 255

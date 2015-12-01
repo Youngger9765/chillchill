@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_action :find_event, :only => [:update, :destroy]
+  before_action :find_event, :only => [:show, :update, :destroy]
 
   def index
     @events = Event.all
