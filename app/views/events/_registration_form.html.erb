@@ -37,12 +37,17 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :registed_day, "梯次" %> <span>*</span> 
+        <%= f.select :registed_day, @event.reservation_days.map{ |d| d.day_info }, :class => "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :people, "大人數" %> <span>*</span> 
         <%= f.text_field :people, :class => "form-control" %>
       </div>
 
       <div class="form-group"> 
-        <%= f.label :kids, "小孩數（小於12歲）" %><span>*</span> 
+        <%= f.label :kids, "小孩數（小於12歲）" %>
         <%= f.text_field :kids, :class => "form-control" %>
       </div>
 
