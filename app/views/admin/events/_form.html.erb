@@ -1,3 +1,5 @@
+<h3>內容設計</h3> 
+<hr>
 <div class="form-group">
   <%= f.label :project_id, "Project" %>
   <%= f.select :project_id, Project.all.map{ |x| [x.name, x.id]}, :class => "form-control" %>
@@ -11,6 +13,16 @@
 <div class="form-group">
   <%= f.label :en_name, "en_name" %>
   <%= f.text_field :en_name, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%=f.label :logo, "LOGO"%>
+  <%=f.file_field :logo%>
+
+  <% if @event.logo.exists? %>
+    <%=image_tag(@event.logo.url(:thumb))%>
+    <%= check_box_tag "destroy_logo", "1" %> 刪除檔案
+  <% end %>
 </div>
 
 <div class="form-group">
@@ -73,21 +85,15 @@
   <%= f.text_area :tips, :class => "form-control" %>
 </div>
 
+
+
+<h3>報名表設計</h3> 
+<hr>
+
 <div class="form-group">
-  <%= f.label :day_list %>
+  <%= f.label :day_list ,"活動梯次預設"%>
   <%= f.select :day_list, ReservationDay.all.map{ |x| [x.day_info, x.day_info]}, {}, :multiple => "true" , :class => "form-control" %>
 </div>
-
-<div class="form-group">
-  <%=f.label :logo, "LOGO"%>
-  <%=f.file_field :logo%>
-
-  <% if @event.logo.exists? %>
-    <%=image_tag(@event.logo.url(:thumb))%>
-    <%= check_box_tag "destroy_logo", "1" %> 刪除檔案
-  <% end %>
-</div>
-
 
 
 <%= f.submit "更新",:class => "btn btn-primary" %>
