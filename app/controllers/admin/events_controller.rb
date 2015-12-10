@@ -2,7 +2,7 @@ class Admin::EventsController < ApplicationController
 
   layout "admin"
 
-  before_action :find_event, :only => [:update, :destroy]
+  before_action :find_event, :only => [:update, :destroy, :edit]
 
   def index
     @events = Event.all
@@ -12,6 +12,11 @@ class Admin::EventsController < ApplicationController
     else
       @event = Event.new
     end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+    @question = Question.new 
   end
 
   def create
@@ -78,5 +83,9 @@ class Admin::EventsController < ApplicationController
   def find_event
     @event = Event.find(params[:id])
   end
+
+  def question_params
+    params.require(:question).permit(:content)
+  end   
 
 end

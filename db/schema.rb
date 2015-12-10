@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201072630) do
+ActiveRecord::Schema.define(version: 20151210053033) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -113,6 +113,15 @@ ActiveRecord::Schema.define(version: 20151201072630) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
   end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "event_id",   limit: 4
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "questions", ["event_id"], name: "index_questions_on_event_id", using: :btree
 
   create_table "registration_forms", force: :cascade do |t|
     t.integer  "event_id",       limit: 4
