@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   has_many :registration_forms
   has_many :questions, :dependent => :destroy
 
-  has_many  :event_reservation_day_ships
+  has_many  :event_reservation_day_ships,:dependent => :destroy
   has_many  :reservation_days, :through => :event_reservation_day_ships
 
   def day_list
