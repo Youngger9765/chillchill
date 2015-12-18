@@ -9,6 +9,7 @@
     <td>問題分類</td>
     <td>選填方式</td>
     <td>預設答案</td> 
+    <td>編輯</td>
   </tr>
   <% @event.questions.each do |question|%>
     <tr>
@@ -22,6 +23,10 @@
           <br>
         <%end%>
       </td>
+      <td>
+        <%=link_to "Edit", admin_event_questions_path(:question_id => question.id), :class => "btn btn-info"%>
+        <%=link_to "刪除", admin_event_question_path(@event,question), :method => :delete, :class => "btn btn-danger", data: { confirm: "Are you sure?"}%></td>
+      </td>
     </tr>
   <%end%>
 </table>
@@ -32,7 +37,7 @@
 <%
   if params[:question_id]
     #edit
-    url = admin_event_question_path(@question)
+    url = admin_event_question_path(@event,@question)
   else 
     #new
     url = admin_event_questions_path

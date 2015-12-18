@@ -1,10 +1,10 @@
 class Question < ActiveRecord::Base
   
-  validates_presence_of :content
+  validates_presence_of :content, :answer_type
 
   belongs_to :event
 
-  has_many  :question_pre_answer_ships
+  has_many  :question_pre_answer_ships,:dependent => :destroy
   has_many  :pre_answers, :through => :question_pre_answer_ships
 
   def pre_answer
