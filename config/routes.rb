@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     resources :categories
     resources :projects
     resources :events do
-      resources :question
+      resources :questions
+      member do
+        get :register_form
+      end  
     end  
   end
 

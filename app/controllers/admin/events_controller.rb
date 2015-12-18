@@ -2,7 +2,7 @@ class Admin::EventsController < ApplicationController
 
   layout "admin"
 
-  before_action :find_event, :only => [:update, :destroy, :edit]
+  before_action :find_event, :only => [:update, :destroy, :edit, :register_form]
 
   def index
     @events = Event.all
@@ -58,7 +58,13 @@ class Admin::EventsController < ApplicationController
     end
 
     flash[:notice] = "Update Success!"
-    redirect_to admin_events_path
+
+    if params[:prepage] =="register_form"
+    end
+    
+    redirect_to :back
+    
+    
   end
 
   def destroy
@@ -67,7 +73,8 @@ class Admin::EventsController < ApplicationController
     redirect_to admin_events_path
   end
 
-
+  def register_form
+  end
 
   private
 
