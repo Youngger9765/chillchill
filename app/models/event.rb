@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   belongs_to :project
 
   has_many :registration_forms
-  has_many :questions
+  has_many :questions, :dependent => :destroy
 
   has_many  :event_reservation_day_ships
   has_many  :reservation_days, :through => :event_reservation_day_ships

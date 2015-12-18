@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210053033) do
+ActiveRecord::Schema.define(version: 20151218103319) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -99,6 +99,12 @@ ActiveRecord::Schema.define(version: 20151210053033) do
     t.datetime "logo_updated_at"
   end
 
+  create_table "pre_answers", force: :cascade do |t|
+    t.string   "a_content",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "en_name",           limit: 255
@@ -114,14 +120,25 @@ ActiveRecord::Schema.define(version: 20151210053033) do
     t.datetime "logo_updated_at"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.integer  "event_id",   limit: 4
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "question_pre_answer_ships", force: :cascade do |t|
+    t.integer  "question_id",   limit: 4
+    t.integer  "pre_answer_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.integer  "event_id",    limit: 4
+    t.string   "answer_type", limit: 255
+    t.string   "q_category",  limit: 255
+    t.text     "content",     limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "questions", ["answer_type"], name: "index_questions_on_answer_type", using: :btree
   add_index "questions", ["event_id"], name: "index_questions_on_event_id", using: :btree
+  add_index "questions", ["q_category"], name: "index_questions_on_q_category", using: :btree
 
   create_table "registration_forms", force: :cascade do |t|
     t.integer  "event_id",       limit: 4

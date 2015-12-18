@@ -1,0 +1,81 @@
+
+<h1><%=@event.name%></h1>
+<h3>報名表新增問題</h3>
+
+<table class="table">
+  <tr>
+    <td>id</td>
+    <td>問題內容</td>
+    <td>問題分類</td>
+    <td>選填方式</td>
+    <td>預設答案</td> 
+  </tr>
+  <% @event.questions.each do |question|%>
+    <tr>
+      <td><%= question.id%></td> 
+      <td><%= question.content%></td>
+      <td><%= question.q_category%></td>
+      <td><%= question.answer_type%></td>
+      <td>
+        <% question.pre_answers.each do |ans|%>
+          <%= ans.a_content%>
+          <br>
+        <%end%>
+      </td>
+    </tr>
+  <%end%>
+</table>
+
+
+
+<hr>
+<%
+  if params[:question_id]
+    #edit
+    url = admin_event_question_path(@question)
+  else 
+    #new
+    url = admin_event_questions_path
+  end
+%>
+<div class="col-md-6">
+  <%=link_to "新增問題", admin_event_questions_path, :class => "btn btn-primary"%>
+  <br>
+  <br>
+  <%= form_for @question, :url => url do |f|%>
+    <div class="form-group">
+      <%= f.label :q_category, "問題分類" %>
+      <%= f.select :q_category,["一般報名","交通方式"]%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content, "問題" %>
+      <%= f.text_area :content, :class => "form-control" %>
+    </div>
+
+    
+    <div class="form-group">
+      <%= f.label :answer_type, "答案格式" %>
+      <%= f.radio_button :answer_type, "單選" %> <%="單選"%>
+      <%= f.radio_button :answer_type, "多選" %> <%="多選"%>
+      <%= f.radio_button :answer_type, "客戶填寫" %> <%="客戶填寫"%>
+    </div>
+
+
+    <div class="form-group" id="pre_answer">
+      <%= f.label :pre_answer ,"答案(如果選客戶填寫，則不需要此項)"%>
+      <%= f.select :pre_answer, PreAnswer.all.map{ |x| [x.a_content, x.a_content]}, {}, :multiple => "true" , :class => "form-control" %>
+    </div>
+    <br>
+    <br>
+
+    <%= f.submit "送出問題",:class => "btn btn-primary" %>
+  <%end%>
+</div>
+
+<script>
+  $("#question_pre_answer").select2({
+     tags: <%=raw PreAnswer.all.map{ |t| t.a_content }.to_json %>,
+     tokenSeparators: [',', ' ']
+   });
+</script>
