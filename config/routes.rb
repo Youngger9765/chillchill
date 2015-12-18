@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :projects
     resources :events do
-      resources :questions
+      resources :questions 
       member do
         get :register_form
       end  

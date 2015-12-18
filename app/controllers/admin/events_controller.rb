@@ -91,8 +91,4 @@ class Admin::EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def question_params
-    params.require(:question).permit(:content)
-  end   
-
 end
