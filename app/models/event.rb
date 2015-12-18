@@ -7,7 +7,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :project
 
-  has_many :registration_form
+  has_many :registration_forms
+  has_many :questions
 
   has_many  :event_reservation_day_ships
   has_many  :reservation_days, :through => :event_reservation_day_ships
@@ -26,6 +27,10 @@ class Event < ActiveRecord::Base
       end
       reservation_day
     end
+  end
+
+  def question_list
+    self.questions.map{ |q| q.content }
   end
 
 end

@@ -1,0 +1,25 @@
+<%=link_to "回上一頁", admin_events_path, :class =>"btn btn-primary btn-lg"%>
+<h1>register_form</h1>
+
+<table class="table">
+  <tr>
+    <td>project</td>
+    <td>name</td>
+    <td>date</td>
+    <td>time</td>
+    <td>place</td>
+    <td>cost</td>
+  </tr>
+  
+    <tr>
+      <td><%=@event.project.name%></td>
+      <td><%=@event.name%></td>
+      <td><%=@event.date%></td>
+      <td><%=@event.time%></td>
+      <td><%=@event.place%></td>
+      <td><%=@event.cost%></td>
+</table>
+
+<div class="clearfix"></div>
+
+<%= render :partial => 'register_form'%>
