@@ -66,6 +66,34 @@
         <%= f.text_area :opinion, :class => "form-control" %>
       </div>
 
+      <%if @event.questions%>
+        <% @event.questions.each do |question|%>
+          <label for="question-#{question.id}"><%="#{question.content},(#{question.answer_type})"%></label>
+          <br>
+          <%if question.answer_type == "客戶填寫"%>
+            <input id="question-<%=question.id%>" name="question-<%=question.id%>" type="text" />
+
+          <%elsif question.answer_type == "單選"%>
+            <select name="question-<%=question.id%>" id="question-<%=question.id%>">
+              <% question.pre_answers.each do |ans|%>
+                <option value="<%=ans.a_content%>"><%=ans.a_content%></option>
+              <%end%>
+            </select>
+          
+          <%elsif question.answer_type == "多選" %>
+            <% question.pre_answers.each do |ans|%>
+              <input id="question-<%=question.id%>" name="question-<%=question.id%>-<%=ans.id%>" type="checkbox" value="<%=ans.a_content%>" /> 
+              <%=ans.a_content%>
+              <br>
+            <%end%>
+
+          <%end%>
+          <br>
+        <%end%>
+      <%end%>
+      <br>
+      
+      
       <%= f.submit "送出",:class => "btn btn-primary" %>
     </div>
   </div>

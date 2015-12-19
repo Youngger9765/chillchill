@@ -22,6 +22,5 @@ class RegistrationForm < ActiveRecord::Base
       reservation_day
     end
   end
-
-
+  
 end
