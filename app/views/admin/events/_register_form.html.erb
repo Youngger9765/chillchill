@@ -6,7 +6,33 @@
     <%= f.select :day_list, ReservationDay.all.map{ |x| [x.day_info, x.day_info]}, {}, :multiple => "true" , :class => "form-control" %>
   </div>
 
-  <%=link_to "新增問題", admin_event_questions_path(@event), :class => "btn btn-warning"%>
+  <%=link_to "編輯新增問題", admin_event_questions_path(@event), :class => "btn btn-warning"%>
+  <br>
+
+  <table class="table">
+    <tr>
+      <td>問題</td>
+      <td>分類</td>
+      <td>格式</td>
+      <td>預設答案</td> 
+    </tr>
+    <% @event.questions.each do |question| %>
+      <tr>
+        <td><%= question.content%></td>
+        <td><%= question.q_category%></td>
+        <td><%= question.answer_type%></td>
+        <td>
+          <% question.pre_answers.each do |ans|%>
+            <%=ans.a_content%>
+            <br>
+          <%end%>
+        </td>
+      </tr>
+    <%end%>
+
+  </table>
+
+  
 
   <hr>
 

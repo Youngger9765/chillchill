@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218103319) do
+ActiveRecord::Schema.define(version: 20151219125555) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20151218103319) do
 
   add_index "category_project_ships", ["category_id"], name: "index_category_project_ships_on_category_id", using: :btree
   add_index "category_project_ships", ["project_id"], name: "index_category_project_ships_on_project_id", using: :btree
+
+  create_table "customer_answers", force: :cascade do |t|
+    t.integer  "registration_form_id", limit: 4
+    t.integer  "question_id",          limit: 4
+    t.text     "content",              limit: 65535
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "customer_answers", ["question_id"], name: "index_customer_answers_on_question_id", using: :btree
+  add_index "customer_answers", ["registration_form_id"], name: "index_customer_answers_on_registration_form_id", using: :btree
 
   create_table "event_reservation_day_ships", force: :cascade do |t|
     t.integer  "reservation_day_id", limit: 4

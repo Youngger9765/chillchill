@@ -7,6 +7,8 @@ class Question < ActiveRecord::Base
   has_many  :question_pre_answer_ships,:dependent => :destroy
   has_many  :pre_answers, :through => :question_pre_answer_ships
 
+  has_many  :customer_answers
+
   def pre_answer
     self.pre_answers.map{ |d| d.a_content }
   end
