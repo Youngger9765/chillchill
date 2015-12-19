@@ -25,7 +25,14 @@
       <td><%=r.people%></td>
       <td><%=r.kids%></td>
       <td><%=r.payment%></td>
-      <td><%=r.payment_status || "尚未付款" %></td>
+      <td>
+        <%= form_for r, :url => admin_event_registration_form_path(@event,r) do |f|%>
+          <div class="form-group">
+            <%= f.select :payment_status,["尚未付款","已付款"] ,:class => "form-control" %>
+          </div>
+          <%= f.submit "更新",:class => "btn btn-primary" %>
+        <%end%>
+      </td>
       <td><%=r.notice%></td>
       <td><%=r.opinion%></td>
       <td>
