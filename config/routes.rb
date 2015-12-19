@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :projects
     resources :events do
       resources :questions 
+      resources :registration_forms
       member do
         get :register_form
       end  

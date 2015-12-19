@@ -8,6 +8,7 @@ event index
     <td>time</td>
     <td>place</td>
     <td>cost</td>
+    <td>訂單</td>
     <td>編輯</td>
     <td>刪除</td>
   </tr>
@@ -20,7 +21,12 @@ event index
       <td><%=event.place%></td>
       <td><%=event.cost%></td>
       <td>
+        <%=link_to "訂單管理", admin_event_registration_forms_path(:event_id => event.id), :class => "btn btn-success"%>
+      </td>
+      <td>
         <%=link_to "內容設計", admin_events_path(:event_id => event.id), :class => "btn btn-info"%>
+        <br>
+        <br>
         <%=link_to "報名表設計", register_form_admin_event_path(event), :class => "btn btn-warning"%>
       </td>
       <td><%=link_to "刪除", admin_event_path(event), :method => :delete, :class => "btn btn-danger", data: { confirm: "Are you sure?"}%></td>
