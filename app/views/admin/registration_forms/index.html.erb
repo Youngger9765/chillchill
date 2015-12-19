@@ -1,0 +1,41 @@
+<%=link_to "回上一頁", admin_events_path, :class =>"btn btn-primary btn-lg"%>
+<h1><%=@event.name%>的訂單</h1>
+
+<table class="table">
+  <tr>
+    <td class="col-md-1">梯次</td>
+    <td>客戶</td>
+    <td>電話</td>
+    <td class="col-md-1">email</td>
+    <td>大人</td>
+    <td>小孩</td> 
+    <td class="col-md-1">付款 方式</td>
+    <td class="col-md-1">付款情形</td>
+    <td class="col-md-2">注意</td>
+    <td class="col-md-2">意見</td>
+    <td class="col-md-3">完整資訊</td>
+
+  </tr>
+  <% @registrstion_forms.each do |r| %>
+    <tr>
+      <td><%=r.registed_day%></td>
+      <td><%=r.try(:user_id) || (r.try(:first_name) + r.try(:last_name))%></td>
+      <td><%=r.phone_number%></td>
+      <td><%=r.email%></td>
+      <td><%=r.people%></td>
+      <td><%=r.kids%></td>
+      <td><%=r.payment%></td>
+      <td><%=r.payment_status || "尚未付款" %></td>
+      <td><%=r.notice%></td>
+      <td><%=r.opinion%></td>
+      <td>
+        <% @event.questions.each do |q|%>
+          <li><%= q.content%></li>  
+          <%= r.customer_answers.find_by(:question_id => q.id).try(:content)%>
+          <br>
+        <%end%>
+      </td>
+    </tr>
+  <%end%>
+</table>
+<%=link_to "回上一頁", admin_events_path, :class =>"btn btn-primary btn-lg"%>
