@@ -6,6 +6,7 @@ class RegistrationForm < ActiveRecord::Base
   validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   
   belongs_to :event
+  has_many  :customer_answers
 
   def day_list(event)
     event.reservation_days.map{ |d| d.day_info }
@@ -22,6 +23,5 @@ class RegistrationForm < ActiveRecord::Base
       reservation_day
     end
   end
-
-
+  
 end

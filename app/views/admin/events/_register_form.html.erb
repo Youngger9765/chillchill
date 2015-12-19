@@ -1,0 +1,47 @@
+<h3>報名表設計</h3> 
+<hr>
+<%= form_for @event, :url => admin_event_path(@event, :prepage =>"register_form") do |f|%>
+  <div class="form-group">
+    <%= f.label :day_list ,"活動梯次預設"%>
+    <%= f.select :day_list, ReservationDay.all.map{ |x| [x.day_info, x.day_info]}, {}, :multiple => "true" , :class => "form-control" %>
+  </div>
+
+  <%=link_to "編輯新增問題", admin_event_questions_path(@event), :class => "btn btn-warning"%>
+  <br>
+
+  <table class="table">
+    <tr>
+      <td>問題</td>
+      <td>分類</td>
+      <td>格式</td>
+      <td>預設答案</td> 
+    </tr>
+    <% @event.questions.each do |question| %>
+      <tr>
+        <td><%= question.content%></td>
+        <td><%= question.q_category%></td>
+        <td><%= question.answer_type%></td>
+        <td>
+          <% question.pre_answers.each do |ans|%>
+            <%=ans.a_content%>
+            <br>
+          <%end%>
+        </td>
+      </tr>
+    <%end%>
+
+  </table>
+
+  
+
+  <hr>
+
+  <%= f.submit "更新",:class => "btn btn-primary" %>
+<%end%>
+
+<script>
+  $("#event_day_list").select2({
+     tags: <%=raw ReservationDay.all.map{ |t| t.day_info }.to_json %>,
+     tokenSeparators: [',', ' ']
+   });
+</script>

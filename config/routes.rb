@@ -16,7 +16,13 @@ Rails.application.routes.draw do
     resources :informations
     resources :categories
     resources :projects
-    resources :events
+    resources :events do
+      resources :questions 
+      resources :registration_forms
+      member do
+        get :register_form
+      end  
+    end  
   end
 
   root :to => "projects#main"

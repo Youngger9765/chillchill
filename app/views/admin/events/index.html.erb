@@ -8,6 +8,7 @@ event index
     <td>time</td>
     <td>place</td>
     <td>cost</td>
+    <td>訂單</td>
     <td>編輯</td>
     <td>刪除</td>
   </tr>
@@ -19,8 +20,16 @@ event index
       <td><%=event.time%></td>
       <td><%=event.place%></td>
       <td><%=event.cost%></td>
-      <td><%=link_to "Edit", admin_events_path(:event_id => event.id), :class => "btn btn-info"%></td>
-      <td><%=link_to "Delete", admin_event_path(event), :method => :delete, :class => "btn btn-danger"%></td>
+      <td>
+        <%=link_to "訂單管理", admin_event_registration_forms_path(:event_id => event.id), :class => "btn btn-success"%>
+      </td>
+      <td>
+        <%=link_to "內容設計", admin_events_path(:event_id => event.id), :class => "btn btn-info"%>
+        <br>
+        <br>
+        <%=link_to "報名表設計", register_form_admin_event_path(event), :class => "btn btn-warning"%>
+      </td>
+      <td><%=link_to "刪除", admin_event_path(event), :method => :delete, :class => "btn btn-danger", data: { confirm: "Are you sure?"}%></td>
       <% if event.logo.exists? %>
         <td><%=image_tag(event.logo.url(:thumb))%></td>  
       <%end%>
@@ -29,17 +38,6 @@ event index
 </table>
 
 <div class="clearfix"></div>
-<%
-  if params[:event_id]
-    #edit
-    url = admin_event_path(@event)
-  else 
-    #new
-    url = admin_events_path
-  end
-%>
-<%=link_to "New", admin_events_path, :class => "btn btn-primary"%>
 
-<%= form_for @event, :url => url do |f|%>
-  <%= render :partial => 'form', :locals => { :f => f} %>
-<%end%>
+<%= render :partial => 'content_form'%>
+
