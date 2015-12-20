@@ -1,7 +1,12 @@
 class Admin::InformationsController < ApplicationController
 
   layout "admin"
-  
+  #後台登入
+  before_action :authenticate_user!
+
+  #檢查權限
+  before_action :check_admin
+    
   def index
     @partner = Partner.find(params[:partner_id])
     @information = Information.new
@@ -28,5 +33,12 @@ class Admin::InformationsController < ApplicationController
                                     :open_day, :en_open_day, :open_time, :close_time
                                     )
   end
+
+  def check_admin
+    unless current_user.admin?
+        raise ActiveRecord::RecordNotFound
+    end
+  end
+
 
 end

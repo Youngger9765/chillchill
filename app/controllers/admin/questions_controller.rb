@@ -2,6 +2,12 @@ class Admin::QuestionsController < ApplicationController
 
   layout "admin"  
 
+  #後台登入
+  before_action :authenticate_user!
+
+  #檢查權限
+  before_action :check_admin
+
   before_action :find_event, :only => [:index, :create]
   before_action :find_question, :only => [:destroy, :update]
   
@@ -81,6 +87,12 @@ private
         
         end
       end 
+    end
+  end
+
+  def check_admin
+    unless current_user.admin?
+        raise ActiveRecord::RecordNotFound
     end
   end
 

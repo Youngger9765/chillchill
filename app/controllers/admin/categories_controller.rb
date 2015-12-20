@@ -1,6 +1,11 @@
 class Admin::CategoriesController < ApplicationController
 
   layout "admin"
+  #後台登入
+  before_action :authenticate_user!
+
+  #檢查權限
+  before_action :check_admin
 
   before_action :find_category, :only => [:update, :destroy]
 
@@ -47,6 +52,12 @@ class Admin::CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find(params[:id])
+  end
+
+  def check_admin
+    unless current_user.admin?
+        raise ActiveRecord::RecordNotFound
+    end
   end
 
 end
