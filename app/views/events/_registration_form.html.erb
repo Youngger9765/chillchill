@@ -71,7 +71,7 @@
           <label for="question-#{question.id}"><%="#{question.content},(#{question.answer_type})"%></label>
           <br>
           <%if question.answer_type == "客戶填寫"%>
-            <input id="question-<%=question.id%>" name="question-<%=question.id%>" type="text" />
+            <textarea class="form-control" id="question-<%=question.id%>" name="question-<%=question.id%>"></textarea>
 
           <%elsif question.answer_type == "單選"%>
             <select name="question-<%=question.id%>" id="question-<%=question.id%>">
