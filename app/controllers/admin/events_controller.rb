@@ -1,7 +1,11 @@
 class Admin::EventsController < ApplicationController
 
   layout "admin"
+  #後台登入
+  before_action :authenticate_user!
 
+  #檢查權限
+  before_action :check_admin
   before_action :find_event, :only => [:update, :destroy, :edit, :register_form]
 
   def index
@@ -89,6 +93,12 @@ class Admin::EventsController < ApplicationController
 
   def find_event
     @event = Event.find(params[:id])
+  end
+
+  def check_admin
+    unless current_user.admin?
+        raise ActiveRecord::RecordNotFound
+    end
   end
 
 end

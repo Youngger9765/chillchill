@@ -32,11 +32,11 @@
       <p> En|中 </p>
       <%if current_user%>
         <%if current_user.admin?%>  
-          <p><%= link_to "admin", admin_partners_path%></p>
+          <p><%= link_to "admin", admin_events_path%></p>
         <%end%>
 
         <h3>
-        Hello! <%= image_tag (current_user.profile.fb_image), style: "width: 40px; height: 40px; display: inline; border-radius: 20px;" %> <%= current_user.profile.username%>
+        Hello! <%= image_tag (current_user.profile.fb_image), style: "width: 40px; height: 40px; display: inline; border-radius: 20px;" %> <%= current_user.profile.first_name || current_user.profile.username%>
         </h3>
         <br>
         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 

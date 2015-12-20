@@ -1,7 +1,11 @@
 class Admin::PartnersController < ApplicationController
 
   layout "admin"
+  #後台登入
+  before_action :authenticate_user!
 
+  #檢查權限
+  before_action :check_admin
   before_action :find_partner, :only =>[:show, :update, :destroy]
 
   def index
@@ -86,6 +90,12 @@ class Admin::PartnersController < ApplicationController
 
   def find_partner
     @partner = Partner.find(params[:id])
+  end
+
+  def check_admin
+    unless current_user.admin?
+        raise ActiveRecord::RecordNotFound
+    end
   end
 
 end
