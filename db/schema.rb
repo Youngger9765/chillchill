@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151220020356) do
+ActiveRecord::Schema.define(version: 20151220023337) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -116,6 +116,26 @@ ActiveRecord::Schema.define(version: 20151220020356) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "username",   limit: 255
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "birthday",   limit: 255
+    t.string   "location",   limit: 255
+    t.string   "locale",     limit: 255
+    t.string   "gender",     limit: 255
+    t.text     "education",  limit: 65535
+    t.string   "status",     limit: 255
+    t.string   "fb_image",   limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "profiles", ["location"], name: "index_profiles_on_location", using: :btree
+  add_index "profiles", ["status"], name: "index_profiles_on_status", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "en_name",           limit: 255
@@ -184,21 +204,27 @@ ActiveRecord::Schema.define(version: 20151220020356) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
+    t.string   "role",                   limit: 255
+    t.text     "fb_raw_data",            limit: 65535
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "fb_uid",                 limit: 255
+    t.string   "fb_token",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["fb_uid"], name: "index_users_on_fb_uid", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role"], name: "index_users_on_role", using: :btree
 
 end
