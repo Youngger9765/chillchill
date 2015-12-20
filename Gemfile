@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'devise'
+
 gem "select2-rails"
 
 gem "paperclip", "~> 4.3"
