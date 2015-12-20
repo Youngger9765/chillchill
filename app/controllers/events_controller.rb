@@ -20,6 +20,10 @@ class EventsController < ApplicationController
   def registration_form
     @registration_form = RegistrationForm.new(registration_form_params)
     @registration_form.event_id = @event.id
+    
+    if current_user
+      @registration_form.user_id = current_user.id
+    end
 
     if @registration_form.save
       flash[:notice] = "Create Success!"
@@ -63,7 +67,8 @@ class EventsController < ApplicationController
   def registration_form_params
     params.require(:registration_form).permit( :event_id, :first_name,:last_name,
                                                :phone_number, :email, :people, :kids,
-                                               :registed_day, :payment, :notice, :opinion
+                                               :registed_day, :payment, :notice, :opinion,
+                                               :user_id
                                               )
   end
 

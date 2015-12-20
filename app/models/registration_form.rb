@@ -1,7 +1,7 @@
 class RegistrationForm < ActiveRecord::Base
 
   validates_presence_of :first_name, :phone_number, :email, :people, :payment ,:message => "請確認 * 必填"
-  validates_length_of :first_name, :last_name, :minimum => 2
+  validates_length_of :first_name, :minimum => 2
   validates_numericality_of :phone_number,:people, :only_integer => true
   validates_format_of :email, :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   
