@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   after_create :create_profile
 
+  def admin?
+    self.role == "admin"
+  end
 
   def create_profile
     self.build_profile

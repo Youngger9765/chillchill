@@ -64,7 +64,7 @@ h1,h2,h3,h4,h5,h6,p{
   font-weight:bold;
 }
 
-.fa{
+#outlink-icon .fa{
   width: 40px;
   height: 40px;
   line-height: 35px;
@@ -78,15 +78,15 @@ h1,h2,h3,h4,h5,h6,p{
   background-color: gray;
 }
 
-.fa-instagram{
+#outlink-icon .fa-instagram{
   background-color: red;
 }
 
-.fa-facebook{
+#outlink-icon .fa-facebook{
   background-color: blue;
 }
 
-.fa-tripadvisor{
+#outlink-icon .fa-tripadvisor{
   background-color: yellow;
   color: black;
 }

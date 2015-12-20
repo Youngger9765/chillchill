@@ -15,22 +15,38 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-md-10">
+      <% if flash[:notice].present? %>
+        <div style = "color: green" class="col-md-offset-3">
+          <h3><%= flash[:notice]%></h3> 
+        </div>
+      <% end %>
+
+      <% if flash[:alert].present? %>
+        <div style = "color: red" class="col-md-offset-3">
+          <h3><%= flash[:alert]%></h3> 
+        </div>
+      <% end %>
+    </div>
     <div class="col-md-offset-10">
       <p> En|中 </p>
-      <p><%= link_to "admin", admin_partners_path%></p>
-      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-info" %>
-    </div>
-    <% if flash[:notice].present? %>
-      <div style = "color: green" class="col-md-offset-3">
-        <h1><%= flash[:notice]%></h1> 
-      </div>
-    <% end %>
+      <%if current_user%>
+        <%if current_user.admin?%>  
+          <p><%= link_to "admin", admin_partners_path%></p>
+        <%end%>
 
-    <% if flash[:alert].present? %>
-      <div style = "color: red" class="col-md-offset-3">
-        <h1><%= flash[:alert]%></h1> 
-      </div>
-    <% end %>
+        <h3>
+        Hello! <%= image_tag (current_user.profile.fb_image), style: "width: 40px; height: 40px; display: inline; border-radius: 20px;" %> <%= current_user.profile.username%>
+        </h3>
+        <br>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+      <%else%>
+        <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" do%>
+            <i class="fa fa-facebook-square"> Sign in with Facebook </i>
+        <%end%>
+      <%end%>
+    </div>
+    
 
     
   </div>
@@ -69,7 +85,7 @@
   
   <div class="row">
     <div class="col-md-9 col-md-offset-2" id="banner-link">
-      <div class="table">
+      <div class="table" id="outlink-icon">
         <tr>
           <% Category.all.each do |c|%>
             <td><%= link_to c.name, projects_path(:category => c.id)%></td>
