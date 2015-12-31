@@ -30,30 +30,13 @@
     </div>
     <div class="col-md-offset-10">
       <p> En|中 </p>
-      <%if current_user%>
-        <%if current_user.admin?%>  
-          <p><%= link_to "admin", admin_events_path%></p>
-        <%end%>
-
-        <h3>
-        Hello! <%= image_tag (current_user.profile.fb_image), style: "width: 40px; height: 40px; display: inline; border-radius: 20px;" %> <%= current_user.profile.first_name || current_user.profile.username%>
-        </h3>
-        <br>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
-      <%else%>
-        <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" do%>
-            <i class="fa fa-facebook-square"> Sign in with Facebook </i>
-        <%end%>
+      <%if current_user && current_user.admin?%>  
+        <p><%= link_to "admin", admin_events_path%></p>
       <%end%>
     </div>
-    
-
-    
   </div>
 </div>
 
-<br>  
-<br>
 <br>
 
 <div class="container">
@@ -78,6 +61,19 @@
             <%= link_to "去 去 高 雄", main_path%></h2>
         </div>
         <br>
+    </div>
+    <div class="col-2">
+      <%if current_user%>
+        <h3>
+        Hello! <%= image_tag (current_user.profile.fb_image), style: "width: 40px; height: 40px; display: inline; border-radius: 20px;" %> <%= current_user.profile.first_name || current_user.profile.username%>
+        </h3>
+        <br>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+      <%else%>
+        <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" do%>
+            <i class="fa fa-facebook-square"> Sign in with Facebook </i>
+        <%end%>
+      <%end%>
     </div>
   </div>
 
